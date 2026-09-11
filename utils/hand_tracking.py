@@ -33,6 +33,14 @@ class HandTracker:
         return hands
 
     @staticmethod
+    def get_landmark_positions(hand_landmarks) -> list[tuple[float, float, float]]:
+        """Return a list of normalized landmark coordinates for the current hand."""
+        return [
+            (landmark.x, landmark.y, landmark.z)
+            for landmark in hand_landmarks.landmark
+        ]
+
+    @staticmethod
     def fingers_up(hand_landmarks) -> list[int]:
         """Return ``[thumb, index, middle, ring, pinky]`` as 0/1 values."""
         landmarks = hand_landmarks.landmark
